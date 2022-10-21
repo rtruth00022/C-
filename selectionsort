@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+#include<time.h>
+using namespace std;
+void selection_sort(int arr[],int n)
+{
+    int i,j;
+    for(i=0;i<n-1;i++)
+    {
+        int min=i;
+      for(j=i+1;j<n;j++)
+      {
+        if(arr[j]<arr[min])
+        {
+            min=j;
+        }
+      }
+          int temp;
+                temp=arr[min];
+                arr[min]=arr[i];
+                arr[i]=temp;
+      }
+}
+int main()
+{
+    int i,n;
+    cout<<"Enter the size of array : ";
+    cin>>n;
+    int arr[n];
+    for(i=0;i<n-1;i++)
+    {
+        arr[i]=rand()%10000;
+    }
+    clock_t start, end;
+    start = clock();
+    selection_sort(arr,n);
+    end = clock();
+    for(i=0;i<n-1;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    double time_taken = double(end -start)/ double(CLOCKS_PER_SEC);
+    cout<<endl;
+    cout<<"Time taken by program is : "<<fixed<<time_taken<<setprecision(5);   
+    cout<<" sec "<<endl;
+
+    return 0;
+}
